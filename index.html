@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Department of Computer Science & Engineering — Barishal University</title>
+  <meta name="description" content="A clean, responsive template for a university CSE department using HTML5, CSS3, Bootstrap 5, and vanilla JavaScript." />
+  <meta name="theme-color" content="#0d6efd" />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --hero-overlay: linear-gradient(180deg, rgba(13,110,253,.35), rgba(13,110,253,.65));
+      --soft-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      letter-spacing: .2px;
+    }
+    /* Navbar */
+    .navbar-brand span{ letter-spacing: .5px; }
+    .nav-scrolled{
+      box-shadow: var(--soft-shadow);
+      background: #fff !important;
+    }
+
+    /* Hero */
+    .hero{
+      position: relative;
+      background: var(--hero-overlay), url('https://images.unsplash.com/photo-1526378722484-bd91ca387e72?q=80&w=1950&auto=format&fit=crop') center/cover no-repeat;
+      color: #fff;
+      min-height: 70vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+    .hero h1{ font-weight: 800; }
+    .hero .lead{ max-width: 700px; margin-inline: auto; }
+
+    /* Section helpers */
+    section{ padding-block: 80px; }
+    .section-title{ font-weight: 800; letter-spacing: .3px; }
+    .shadow-soft{ box-shadow: var(--soft-shadow); }
+    .badge-rounded{ border-radius: 100rem; }
+
+    /* Cards */
+    .card-hover:hover{ transform: translateY(-4px); box-shadow: 0 10px 30px rgba(13,110,253,.15); }
+    .card-hover{ transition: .25s ease; }
+
+    /* Timeline */
+    .timeline{
+      position: relative;
+      padding-left: 1rem;
+    }
+    .timeline::before{
+      content:""; position: absolute; left: 10px; top: 0; bottom:0; width: 2px; background: rgba(13,110,253,.25);
+    }
+    .timeline-item{ position: relative; padding-left: 2rem; margin-bottom: 1.5rem; }
+    .timeline-item::before{
+      content:""; position:absolute; left: 2px; top:.35rem; width: 16px; height:16px; border-radius: 50%; background:#0d6efd; box-shadow:0 0 0 4px rgba(13,110,253,.15);
+    }
+
+    /* Footer */
+    footer a{ color: inherit; opacity:.9 }
+    footer a:hover{ opacity:1 }
+
+    /* Back to top */
+    #backToTop{ position: fixed; right: 1rem; bottom: 1rem; display:none; z-index: 1030; }
+
+    /* Dark mode small tweaks */
+    .dark .hero { filter: contrast(1.05) brightness(.9); }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80" tabindex="0">
+
+  <!-- NAVBAR -->
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-light bg-white fixed-top py-2">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#home" aria-label="Home">
+        <i class="bi bi-cpu-fill text-primary fs-4"></i>
+        <span class="fw-bold">BU CSE</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faculty">Faculty</a></li>
+          <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+          <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="#admissions">Admissions</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-3"><button id="themeToggle" class="btn btn-sm btn-outline-primary"><i class="bi bi-moon"></i> Theme</button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero">
+    <div class="container py-5">
+      <span class="badge text-bg-light badge-rounded px-3 py-2 mb-3 shadow-sm">Department of Computer Science & Engineering</span>
+      <h1 class="display-5 mb-3">Innovate. Research. Build the Future.</h1>
+      <p class="lead mb-4">Welcome to the CSE Department at Barishal University. We foster world‑class teaching and research across algorithms, AI, data systems, and human‑centered computing.</p>
+      <div class="d-flex gap-2 justify-content-center">
+        <a href="#programs" class="btn btn-primary btn-lg"><i class="bi bi-journal-bookmark"></i> Explore Programs</a>
+        <a href="#research" class="btn btn-outline-light btn-lg"><i class="bi bi-beaker"></i> Research Areas</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981d?q=80&w=1600&auto=format&fit=crop" alt="Students collaborating in a computer lab" class="img-fluid rounded-4 shadow-soft" />
+        </div>
+        <div class="col-lg-6">
+          <h2 class="section-title mb-3">About the Department</h2>
+          <p class="text-secondary">Our mission is to nurture problem solvers and innovators who advance society through computing. We offer rigorous curricula, hands‑on labs, and vibrant research groups in collaboration with industry and academia.</p>
+          <div class="row g-3 mt-3">
+            <div class="col-6 col-md-4">
+              <div class="p-3 border rounded-4 text-center h-100 card-hover">
+                <div class="fs-3 text-primary"><i class="bi bi-people"></i></div>
+                <div class="fw-semibold mt-1">900+ Students</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="p-3 border rounded-4 text-center h-100 card-hover">
+                <div class="fs-3 text-primary"><i class="bi bi-award"></i></div>
+                <div class="fw-semibold mt-1">30+ Faculty</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="p-3 border rounded-4 text-center h-100 card-hover">
+                <div class="fs-3 text-primary"><i class="bi bi-cast"></i></div>
+                <div class="fw-semibold mt-1">Modern Labs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section id="programs" class="bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">Programs</h2>
+      <p class="text-center text-secondary mb-5">Undergraduate and graduate degrees designed for strong foundations and impactful careers.</p>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 rounded-4 shadow-soft card-hover">
+            <div class="card-body">
+              <span class="badge text-bg-primary badge-rounded mb-2">B.Sc. in CSE</span>
+              <h5 class="card-title">Bachelor of Science (Honours)</h5>
+              <p class="card-text text-secondary">Four-year program with core CS theory, systems, and extensive project‑based learning.</p>
+              <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#curriculumModal" data-program="B.Sc. in CSE">View Curriculum</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 rounded-4 shadow-soft card-hover">
+            <div class="card-body">
+              <span class="badge text-bg-success badge-rounded mb-2">M.Sc. in CSE</span>
+              <h5 class="card-title">Master of Science</h5>
+              <p class="card-text text-secondary">Advanced coursework and thesis options in AI, Data Science, Networks, and HCI.</p>
+              <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#curriculumModal" data-program="M.Sc. in CSE">View Curriculum</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 rounded-4 shadow-soft card-hover">
+            <div class="card-body">
+              <span class="badge text-bg-warning badge-rounded mb-2">Short Courses</span>
+              <h5 class="card-title">Professional Certificates</h5>
+              <p class="card-text text-secondary">Industry‑aligned upskilling in ML, Cloud, Cybersecurity, and Competitive Programming.</p>
+              <a class="btn btn-outline-primary btn-sm" href="#admissions">Apply Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACULTY -->
+  <section id="faculty">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">Faculty</h2>
+      <div class="row g-4">
+        <!-- Faculty card template -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 rounded-4 shadow-soft card-hover">
+            <img class="card-img-top rounded-top-4" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=1200&auto=format&fit=crop" alt="Faculty portrait placeholder" />
+            <div class="card-body">
+              <h6 class="mb-1">Dr. A. Rahman</h6>
+              <div class="small text-secondary mb-2">Professor & Chair</div>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge text-bg-light">Algorithms</span>
+                <span class="badge text-bg-light">Complexity</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 rounded-4 shadow-soft card-hover">
+            <img class="card-img-top rounded-top-4" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" alt="Faculty portrait placeholder" />
+            <div class="card-body">
+              <h6 class="mb-1">Dr. S. Akter</h6>
+              <div class="small text-secondary mb-2">Associate Professor</div>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge text-bg-light">Machine Learning</span>
+                <span class="badge text-bg-light">NLP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 rounded-4 shadow-soft card-hover">
+            <img class="card-img-top rounded-top-4" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1200&auto=format&fit=crop" alt="Faculty portrait placeholder" />
+            <div class="card-body">
+              <h6 class="mb-1">Mr. T. Hasan</h6>
+              <div class="small text-secondary mb-2">Lecturer</div>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge text-bg-light">Networks</span>
+                <span class="badge text-bg-light">Security</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 rounded-4 shadow-soft card-hover">
+            <img class="card-img-top rounded-top-4" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1200&auto=format&fit=crop" alt="Faculty portrait placeholder" />
+            <div class="card-body">
+              <h6 class="mb-1">Ms. N. Sultana</h6>
+              <div class="small text-secondary mb-2">Lecturer</div>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge text-bg-light">HCI</span>
+                <span class="badge text-bg-light">UX</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research" class="bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">Research Areas</h2>
+
+      <ul class="nav nav-pills justify-content-center gap-2 mb-4" id="researchTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="pill-ai" data-bs-toggle="pill" data-bs-target="#pane-ai" type="button" role="tab" aria-controls="pane-ai" aria-selected="true">AI & ML</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pill-systems" data-bs-toggle="pill" data-bs-target="#pane-systems" type="button" role="tab" aria-controls="pane-systems" aria-selected="false">Systems</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pill-theory" data-bs-toggle="pill" data-bs-target="#pane-theory" type="button" role="tab" aria-controls="pane-theory" aria-selected="false">Theory</button>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="pane-ai" role="tabpanel" aria-labelledby="pill-ai" tabindex="0">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="p-4 bg-white rounded-4 shadow-soft h-100">
+                <h5>Intelligent Systems</h5>
+                <p class="text-secondary mb-0">Applied machine learning for language, vision, and decision‑making with societal impact.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-4 bg-white rounded-4 shadow-soft h-100">
+                <h5>Data Science</h5>
+                <p class="text-secondary mb-0">Large‑scale analytics, MLOps, and trustworthy AI focusing on fairness and robustness.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pane-systems" role="tabpanel" aria-labelledby="pill-systems" tabindex="0">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="p-4 bg-white rounded-4 shadow-soft h-100">
+                <h5>Networks & Security</h5>
+                <p class="text-secondary mb-0">Next‑gen networking, cyber defense, and privacy‑preserving systems.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-4 bg-white rounded-4 shadow-soft h-100">
+                <h5>Distributed Systems</h5>
+                <p class="text-secondary mb-0">Cloud‑native services, storage, and high‑performance computing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pane-theory" role="tabpanel" aria-labelledby="pill-theory" tabindex="0">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="p-4 bg-white rounded-4 shadow-soft h-100">
+                <h5>Algorithms</h5>
+                <p class="text-secondary mb-0">Approximation, randomized methods, and graph algorithms.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-4 bg-white rounded-4 shadow-soft h-100">
+                <h5>Cryptography</h5>
+                <p class="text-secondary mb-0">Secure protocols and applied crypto for modern applications.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section id="news">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">Latest News</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 rounded-4 shadow-soft card-hover">
+            <img src="https://images.unsplash.com/photo-1487528278747-ba99ed528ebc?q=80&w=1600&auto=format&fit=crop" class="card-img-top rounded-top-4" alt="Conference photograph placeholder" />
+            <div class="card-body">
+              <span class="badge text-bg-info badge-rounded mb-2">Announcement</span>
+              <h5 class="card-title">CSE Research Symposium 2025</h5>
+              <p class="card-text text-secondary">Call for papers open for our annual research symposium hosted at BU campus.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 rounded-4 shadow-soft card-hover">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop" class="card-img-top rounded-top-4" alt="Hackathon placeholder" />
+            <div class="card-body">
+              <span class="badge text-bg-primary badge-rounded mb-2">Achievement</span>
+              <h5 class="card-title">Team BU wins HackFest</h5>
+              <p class="card-text text-secondary">Our undergraduate team secured 1st place at National HackFest 2025.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 rounded-4 shadow-soft card-hover">
+            <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop" class="card-img-top rounded-top-4" alt="AI lab placeholder" />
+            <div class="card-body">
+              <span class="badge text-bg-warning badge-rounded mb-2">Spotlight</span>
+              <h5 class="card-title">New AI Lab inaugurated</h5>
+              <p class="card-text text-secondary">State‑of‑the‑art computing resources to bolster AI research and teaching.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events" class="bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">Upcoming Events</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h6 class="mb-1">Aug 28, 2025 — Alumni Meetup</h6>
+          <p class="text-secondary mb-0">Reconnect with alumni across cohorts and share industry insights.</p>
+        </div>
+        <div class="timeline-item">
+          <h6 class="mb-1">Sep 10, 2025 — Seminar: Trustworthy AI</h6>
+          <p class="text-secondary mb-0">Guest lecture by Dr. Farhana on fairness and robustness in ML.</p>
+        </div>
+        <div class="timeline-item">
+          <h6 class="mb-1">Oct 02, 2025 — Programming Contest</h6>
+          <p class="text-secondary mb-0">ICPC‑style intra‑university contest for all semesters.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMISSIONS -->
+  <section id="admissions">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <h2 class="section-title mb-3">Admissions</h2>
+          <p class="text-secondary">Admission is competitive and merit‑based. Applicants are encouraged to review the eligibility, prepare documents, and apply within the deadline.</p>
+          <div class="accordion" id="admissionFAQ">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq1h"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">Eligibility & Requirements</button></h2>
+              <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faq1h" data-bs-parent="#admissionFAQ">
+                <div class="accordion-body">Minimum academic criteria, entrance test (if applicable), English proficiency, and prerequisite courses.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq2h"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">Tuition & Scholarships</button></h2>
+              <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faq2h" data-bs-parent="#admissionFAQ">
+                <div class="accordion-body">Tuition fees are competitive, with scholarships and assistantships available for outstanding students.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq3h"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">Application Deadlines</button></h2>
+              <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faq3h" data-bs-parent="#admissionFAQ">
+                <div class="accordion-body">Please see the academic calendar for the latest application windows and important dates.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="p-4 bg-light rounded-4 shadow-soft">
+            <h5 class="mb-3">Quick Apply</h5>
+            <form class="row g-3" id="applyForm" novalidate>
+              <div class="col-md-6">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" id="name" class="form-control" required>
+                <div class="invalid-feedback">Please enter your name</div>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" class="form-control" required>
+                <div class="invalid-feedback">Please provide a valid email</div>
+              </div>
+              <div class="col-12">
+                <label for="program" class="form-label">Program</label>
+                <select id="program" class="form-select" required>
+                  <option value="">Choose...</option>
+                  <option>B.Sc. in CSE</option>
+                  <option>M.Sc. in CSE</option>
+                  <option>Short Courses</option>
+                </select>
+                <div class="invalid-feedback">Select a program</div>
+              </div>
+              <div class="col-12">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" class="form-control" rows="3" placeholder="Tell us about your interests..."></textarea>
+              </div>
+              <div class="col-12 d-flex align-items-center gap-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <div id="applyToast" class="small text-success d-none"><i class="bi bi-check-circle"></i> Application sent!</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">Contact</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="p-4 bg-white rounded-4 shadow-soft h-100">
+            <h5>Department Office</h5>
+            <p class="text-secondary mb-1">Barishal University, Campus Road</p>
+            <p class="text-secondary mb-1">Email: <a href="mailto:cse@bu.ac.bd">cse@bu.ac.bd</a></p>
+            <p class="text-secondary mb-3">Phone: +880-1234-567890</p>
+            <div class="ratio ratio-16x9 rounded-4 overflow-hidden">
+              <iframe title="Google Map placeholder" src="https://www.openstreetmap.org/export/embed.html?bbox=90.325%2C22.688%2C90.38%2C22.72&amp;layer=mapnik" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-4 bg-white rounded-4 shadow-soft h-100">
+            <h5>Connect With Us</h5>
+            <form class="row g-3" id="contactForm" novalidate>
+              <div class="col-md-6">
+                <label class="form-label" for="cname">Your Name</label>
+                <input id="cname" class="form-control" required>
+                <div class="invalid-feedback">Please enter your name</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="cemail">Email</label>
+                <input type="email" id="cemail" class="form-control" required>
+                <div class="invalid-feedback">Please enter a valid email</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="cmsg">Message</label>
+                <textarea id="cmsg" rows="4" class="form-control" required></textarea>
+                <div class="invalid-feedback">Message is required</div>
+              </div>
+              <div class="col-12 d-flex gap-3 align-items-center">
+                <button class="btn btn-outline-primary" type="submit"><i class="bi bi-send"></i> Send</button>
+                <div id="contactToast" class="small text-success d-none"><i class="bi bi-check-circle"></i> Message sent!</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-top py-4">
+    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+      <div class="small">© <span id="year"></span> BU Department of CSE. All rights reserved.</div>
+      <div class="d-flex gap-3">
+        <a href="#about" class="small text-decoration-none">About</a>
+        <a href="#admissions" class="small text-decoration-none">Admissions</a>
+        <a href="#contact" class="small text-decoration-none">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button id="backToTop" class="btn btn-primary btn-lg rounded-circle" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Curriculum Modal -->
+  <div class="modal fade" id="curriculumModal" tabindex="-1" aria-labelledby="curriculumLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h5 class="modal-title" id="curriculumLabel">Program Curriculum</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <h6>Core Courses</h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Data Structures & Algorithms</li>
+                <li class="list-group-item">Operating Systems</li>
+                <li class="list-group-item">Database Systems</li>
+                <li class="list-group-item">Computer Networks</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h6>Electives</h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Machine Learning</li>
+                <li class="list-group-item">Computer Vision</li>
+                <li class="list-group-item">Cybersecurity</li>
+                <li class="list-group-item">HCI & UX</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <a href="#admissions" class="btn btn-primary">Apply</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- App JS -->
+  <script>
+    // Sticky nav shadow when scrolled
+    const nav = document.getElementById('mainNav');
+    const backToTop = document.getElementById('backToTop');
+    const yearEl = document.getElementById('year');
+    const themeBtn = document.getElementById('themeToggle');
+
+    yearEl.textContent = new Date().getFullYear();
+
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > 10;
+      nav.classList.toggle('nav-scrolled', scrolled);
+      backToTop.style.display = window.scrollY > 400 ? 'inline-flex' : 'none';
+    });
+
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Curriculum modal program title sync
+    const curriculumModal = document.getElementById('curriculumModal');
+    if (curriculumModal) {
+      curriculumModal.addEventListener('show.bs.modal', (event) => {
+        const trigger = event.relatedTarget;
+        const program = trigger?.getAttribute('data-program') || 'Program Curriculum';
+        curriculumModal.querySelector('.modal-title').textContent = program + ' — Curriculum';
+      });
+    }
+
+    // Simple form validation + toasts
+    function attachFormHandler(formId, toastId){
+      const form = document.getElementById(formId);
+      const toast = document.getElementById(toastId);
+      if(!form) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          e.stopPropagation();
+          form.classList.add('was-validated');
+          return;
+        }
+        form.reset();
+        form.classList.remove('was-validated');
+        toast?.classList.remove('d-none');
+        setTimeout(() => toast?.classList.add('d-none'), 2500);
+      });
+    }
+
+    attachFormHandler('applyForm', 'applyToast');
+    attachFormHandler('contactForm', 'contactToast');
+
+    // Theme toggle (light/dark)
+    function setTheme(dark){
+      document.documentElement.classList.toggle('dark', !!dark);
+      document.body.classList.toggle('bg-dark', !!dark);
+      document.body.classList.toggle('text-light', !!dark);
+    }
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setTheme(!isDark);
+    });
+  </script>
+</body>
+</html>
